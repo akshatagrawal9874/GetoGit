@@ -8,7 +8,6 @@ import {
     NavItem,
     NavLink,
     NavbarText,
-    CardImg
 } from 'reactstrap';
 import './Header.css'
 

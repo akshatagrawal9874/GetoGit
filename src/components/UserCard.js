@@ -4,7 +4,7 @@ import {Card, CardBody} from 'reactstrap';
 const UserCard = ({user}) => {
     return (
         <Card className="text-center mt-3 mb-4">
-            <img src={user.avatar_url} className="img-roundedCircle" />
+            <img src={user.avatar_url} alt="User not found" className="img-roundedCircle"/>
             <CardBody>
                 <div className="text-primary">{user.name}</div>
                 <div className="text-primary">{user.location}</div>
@@ -13,6 +13,13 @@ const UserCard = ({user}) => {
                 <div className="text-info">Followers {user.followers}</div>
                 <div className="text-info">Following {user.following}</div>
                 <div className="text-info">Repositories {user.public_repos}</div>
+            </CardBody>
+            <CardBody>
+                "
+                
+                
+                
+                "
             </CardBody>
         </Card>
     )
