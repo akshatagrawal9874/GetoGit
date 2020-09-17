@@ -6,7 +6,7 @@ const Footer = () => {
         <Container fluid
             tag="footer"
             className="text-center bg-info text-white fixed-bottom p-3"
-        >Get-o-GitHub | Made with ❤️ by Aniket Kumar Sinha
+        >GetoGit | Made By Akshat, Harsh and Tejas
         </Container>
     )
 }

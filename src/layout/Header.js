@@ -7,12 +7,12 @@ import {
     Nav,
     NavItem,
     NavLink,
-    NavbarText
+    NavbarText,
+    CardImg
 } from 'reactstrap';
 import './Header.css'
 
 import {Link} from 'react-router-dom';
-
 import {UserContext} from '../context/UserContext';
 
 const Header = () => {
@@ -24,13 +24,14 @@ const Header = () => {
 
     return (
         <Navbar color="info" light expand="md">
-            <NavbarBrand><Link to="/" className=" brand">Get-o-GitHub</Link></NavbarBrand>
+            <CardImg top width="10%" src="github.png" alt="Card image cap" />
+            <NavbarBrand><Link to="/" className=" brand">GetoGit</Link></NavbarBrand>
             <NavbarText className="text-white">
                 {
                     context.user?.email ? context.user.email : ""
                 }
             </NavbarText>
-            {/*<img src={"github.png"} />*/}
+        
             <NavbarToggler onClick={toggle} />
             <Collapse  isOpen={isOpen} navbar>
                 <Nav className="ml-auto"  navbar>

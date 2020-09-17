@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.signin-form {
+  /* border: 1px solid #e1e1e1; */
+  padding: 20px 20px;
+  padding-top: 10px;
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 3px;
+}
+.signin-form h1 {
+  margin: 15px 0;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 400;
+}
+.btn {
+  border: 0;
+  padding: 10px 7px;
+  border-radius: 3px;
+}
+.btn:hover {
+  cursor: pointer;
+}
+.basic-btn {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+}
+.basic-btn:hover {
+  background-color: #e1e1e1;
+}
+.basic-btn img {
+  height: 20px;
+  margin-right: 10px;
+}
+.signin-form button {
+  width: 100%;
+  justify-content: center;
+  margin: 20px 0;
+}

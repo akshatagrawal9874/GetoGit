@@ -14,7 +14,6 @@ const UserCard = ({user}) => {
             </CardBody>
         </Card>
     )
-
 }
 
 export default UserCard;

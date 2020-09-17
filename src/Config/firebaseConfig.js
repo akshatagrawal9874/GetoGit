@@ -1,9 +1,11 @@
 export default {
-    apiKey: "AIzaSyAK95PJkFfg4jtx9TU1zBnhCVdZHevsmFE",
-    authDomain: "github-account.firebaseapp.com",
-    databaseURL: "https://github-account.firebaseio.com",
-    projectId: "github-account",
-    storageBucket: "github-account.appspot.com",
-    messagingSenderId: "870155848437",
-    appId: "1:870155848437:web:24336546eabfc2783fd3bc"
+  apiKey: "AIzaSyBwGQRpxHlFE7BPAoQMzA7-laJwMXnzESw",
+  authDomain: "getogit.firebaseapp.com",
+  databaseURL: "https://getogit.firebaseio.com",
+  projectId: "getogit",
+  storageBucket: "getogit.appspot.com",
+  messagingSenderId: "293549222354",
+  appId: "1:293549222354:web:7349c363c32089549c400b",
+  measurementId: "G-63R71RYCVJ"
   };
+  
