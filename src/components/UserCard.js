@@ -11,6 +11,8 @@ const UserCard = ({user}) => {
                 <div className="text-primary">{user.bio}</div>
                 <div className="text-info">Available for hire: {user.hireable ? 'YES':'Nope'}</div>
                 <div className="text-info">Followers {user.followers}</div>
+                <div className="text-info">Following {user.following}</div>
+                <div className="text-info">Repositories {user.public_repos}</div>
             </CardBody>
         </Card>
     )

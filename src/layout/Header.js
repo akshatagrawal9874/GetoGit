@@ -24,7 +24,6 @@ const Header = () => {
 
     return (
         <Navbar color="info" light expand="md">
-            <CardImg top width="10%" src="github.png" alt="Card image cap" />
             <NavbarBrand><Link to="/" className=" brand">GetoGit</Link></NavbarBrand>
             <NavbarText className="text-white">
                 {

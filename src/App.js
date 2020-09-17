@@ -42,7 +42,7 @@ const App = () => {
           <Route exact path="/signup" component={Signup} />
           <Route exact path="*" component={PageNotFound} />
         </Switch>
-        <Footer />
+        <Footer/>
       </UserContext.Provider>
     </Router>
   );
