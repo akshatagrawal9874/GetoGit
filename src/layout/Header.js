@@ -23,8 +23,8 @@ const Header = () => {
     const toggle = () => setIsOpen(!isOpen)
 
     return (
-        <Navbar color="info" light expand="md">
-            <NavbarBrand><Link to="/" className=" brand">GetoGit</Link></NavbarBrand>
+        <Navbar className="colour" light expand="md">
+            <NavbarBrand ><Link to="/" className=" brand">GetoGit</Link></NavbarBrand>
             <NavbarText className="text-white">
                 {
                     context.user?.email ? context.user.email : ""

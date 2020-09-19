@@ -18,11 +18,12 @@ const Repos = ({repos_url}) => {
     return (
         <ListGroup >
             {repos.map(repo => (
-                <ListGroupItem key={repo.id}>
-                    <div className="text-primary">📘{repo.name}</div>
+                <><ListGroupItem key={repo.id} style={{boxShadow: "10px 10px 10px #1da7dd"}}>
+                    <div className="text-primary font-weight-bold">📘{repo.name}</div>
                     <div className="text-secondary">{repo.language}</div>
                     <div className="text-info">{repo.description}</div>
-                </ListGroupItem>    
+                </ListGroupItem>
+                    <br /></>
             ))}
             <ListGroupItem style={{backgroundColor:"transparent", border:"None"}}>
                 <br/>

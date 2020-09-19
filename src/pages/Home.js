@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useContext } from "react";
 import Axios from "axios";
 
@@ -11,6 +12,7 @@ import {
   InputGroupAddon
 } from "reactstrap";
 
+import "./Home.css";
 import UserCard from "../components/UserCard";
 import Repos from "../components/Repos";
 import { Redirect } from "react-router-dom";
@@ -40,6 +42,7 @@ const Home = () => {
 
   return (
     <Container>
+      
       <Row className=" mt-3">
         <Col md="5">
           <InputGroup>
@@ -59,6 +62,8 @@ const Home = () => {
         </Col>
         <Col md="7">{user ? <Repos repos_url={user.repos_url} /> : null}</Col>
       </Row>
+      <div className="svg">
+      </div>
     </Container>
   );
 };
