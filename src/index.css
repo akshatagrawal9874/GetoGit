@@ -1,18 +1,20 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Ranchers', cursive;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("https://dependabot.com/12689cd7913704d67900e1adaf7701e2/hello-github.png");
-    background-repeat: no-repeat;
+
+  background-image: url("https://i2.wp.com/www.csscodelab.com/wp-content/uploads/2019/11/stripe-hero-background-effect-html-css.png?fit=1062%2C631&ssl=1");
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
     background-size: cover;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.code {
+  font-family: 'Ranchers', cursive;
 }
 .signin-form {
   /* border: 1px solid #e1e1e1; */

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useState, useContext} from 'react';
 import {
     Container,
@@ -13,6 +14,7 @@ import {
     CardFooter,
     CardHeader,
 } from 'reactstrap';
+import "./Signin.css" 
 
 import firebase from 'firebase/app';
 import {UserContext} from '../context/UserContext';
@@ -52,12 +54,15 @@ const Signin = () => {
         return <Redirect to="/" />
     }  
     return (
+		
 		<Container className='text-center'>
 			<Row>
 				<Col lg={6} className='offset-lg-3 mt-5'>
 					<Card>
+					<div className="box background" >
+
 						<Form onSubmit={handleSubmit}>
-							<CardHeader className=''>SignIn Here</CardHeader>
+							<CardHeader className='background'>SignIn Here</CardHeader>
 							<CardBody>
 								<FormGroup row>
 									<Label for='email' sm={3}>
@@ -95,11 +100,15 @@ const Signin = () => {
 									Sign In
 								</Button>
 							</CardFooter>
+
 						</Form>
+						</div>
+
 					</Card>
 				</Col>
 			</Row>
 		</Container>
+		
 	);
 
 };
