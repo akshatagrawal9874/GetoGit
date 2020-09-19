@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 // @ts-nocheck
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
@@ -13,12 +14,12 @@ const Repos = ({repos_url}) => {
 
     useEffect(() => {
         fetchRepos()
-    }, [repos_url])
+    }, )
 
     return (
         <ListGroup >
             {repos.map(repo => (
-                <ListGroupItem key={repo.id}>
+                <ListGroupItem key={repo.id} className="justify-content-between">
                     <div className="text-primary">📘{repo.name}</div>
                     <div className="text-secondary">{repo.language}</div>
                     <div className="text-info">{repo.description}</div>

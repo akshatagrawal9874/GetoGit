@@ -49,7 +49,7 @@ const Signup = () => {
     }
 
     if (context.user?.uid) {
-        return <Redirect to="/git-o-github" />
+        return <Redirect to="/" />
     }  
     return (
 		<Container className='text-center'>
