@@ -1,13 +1,19 @@
 body {
   margin: 0;
   font-family: 'Ranchers', cursive;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    background-repeat: no-repeat;
+
+  background-image: url("https://i2.wp.com/www.csscodelab.com/wp-content/uploads/2019/11/stripe-hero-background-effect-html-css.png?fit=1062%2C631&ssl=1");
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
     background-size: cover;
+
 }
 
-code {
+.code {
   font-family: 'Ranchers', cursive;
 }
 .signin-form {
