@@ -51,7 +51,7 @@ const Signin = () => {
     }
 
     if (context.user?.uid) {
-        return <Redirect to="/git-o-github" />
+        return <Redirect to="/" />
     }  
     return (
 		
