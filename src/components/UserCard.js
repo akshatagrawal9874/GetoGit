@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import {Card, CardBody} from 'reactstrap';
 
@@ -14,12 +15,13 @@ const UserCard = ({user}) => {
                 <div className="text-info">Following {user.following}</div>
                 <div className="text-info">Repositories {user.public_repos}</div>
             </CardBody>
-            <CardBody>
-                "
+            <CardBody style={{backgroundColor:"transparent", border:"None"}}>
+            <br/>
                 
                 
                 
-                "
+                
+            <br />
             </CardBody>
         </Card>
     )

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, {useState, useEffect} from 'react';
 import Axios from 'axios';
 import { ListGroup, ListGroupItem } from 'reactstrap';
@@ -15,21 +16,21 @@ const Repos = ({repos_url}) => {
     }, [repos_url])
 
     return (
-        <ListGroup>
+        <ListGroup >
             {repos.map(repo => (
                 <ListGroupItem key={repo.id}>
-                    <div className="text-primary">{repo.name}</div>
+                    <div className="text-primary">📘{repo.name}</div>
                     <div className="text-secondary">{repo.language}</div>
                     <div className="text-info">{repo.description}</div>
-                </ListGroupItem>
+                </ListGroupItem>    
             ))}
-            <ListGroupItem>
-                "
+            <ListGroupItem style={{backgroundColor:"transparent", border:"None"}}>
+                <br/>
                 
                 
                 
                 
-                "
+                <br />
             </ListGroupItem>
         </ListGroup>
     )
