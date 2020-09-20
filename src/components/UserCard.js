@@ -4,7 +4,7 @@ import {Card, CardBody} from 'reactstrap';
 
 const UserCard = ({user}) => {
     return (
-        <Card className="text-center mt-3 mb-4 " style={{boxShadow: "10px 10px 10px #1da7dd"}} >
+        <Card className="text-center mt-3 mb-4 " style={{boxShadow: "5px 5px 5px #1da7dd"}} >
             <img src={user.avatar_url} alt="User not found" className="img-responsive"/>
             <CardBody>
                 <div className="text-primary">{user.name}</div>
