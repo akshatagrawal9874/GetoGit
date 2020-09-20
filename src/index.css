@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url("https://dependabot.com/12689cd7913704d67900e1adaf7701e2/hello-github.png");
+  background-image: url("./background.jpeg");
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
