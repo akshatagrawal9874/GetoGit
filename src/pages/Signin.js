@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {useState, useContext} from 'react';
+import React from 'react';
 import {
     Container,
     Form,
@@ -17,40 +17,61 @@ import {
 import "./Signin.css" 
 
 import firebase from 'firebase/app';
-import {UserContext} from '../context/UserContext';
+//import {UserContext} from '../context/UserContext';
 import {Redirect} from 'react-router-dom';
 import {toast} from 'react-toastify';
+import {connect} from "react-redux"
+import {setCurrentUser} from "../User/user.actions"
 
-const Signin = () => {
+class Signin extends React.Component {
 
-    const context = useContext(UserContext)
+    /*const context = useContext(UserContext)
 
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+	const [password, setPassword] = useState('')*/
+	
+	constructor(){
+		super();
+		this.state={
+			email:"",
+			password:""
+		}
+	}
 
-    const handleSignIn = () => {
+     handleSignIn = () => {
+		 const {setCurrentUser}=this.props;
+		 const {email,password}=this.state;
+		// let i=0;
+		
         firebase 
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then( res => {
-                console.log(res);
-                context.setUser({email: res.user.email, uid: res.user.uid})
-                })
+			console.log(`response ${JSON.stringify(res)}`);
+ //               context.setUser({email: res.user.email, uid: res.user.uid})
+               setCurrentUser({
+	                       id:res.user.uid,
+	                     email:res.user.email,
+                    	password:res.user.password
+                    })
+				})
             .catch(error => {
                 console.log(error);
                 toast(error.message, {
                     type: "error",
                     position: "bottom-right"
                 })
-            })
-    }
-
-    const handleSubmit = e => {
+			})
+			console.log(this.props.currentUser);	
+   
+		}
+     handleSubmit = e => {
         e.preventDefault()
-        handleSignIn()
+        this.handleSignIn()
     }
-
-    if (context.user?.uid) {
+    render(){
+	     console.log(this.props.currentUser)
+		 if (this.props.currentUser) {
         return <Redirect to="/" />
     }  
     return (
@@ -61,7 +82,7 @@ const Signin = () => {
 					<Card>
 					<div className="box background" >
 
-						<Form onSubmit={handleSubmit}>
+						<Form onSubmit={this.handleSubmit}>
 							<CardHeader className='background'>SignIn Here</CardHeader>
 							<CardBody>
 								<FormGroup row>
@@ -74,8 +95,8 @@ const Signin = () => {
 											name='email'
 											id='email'
 											placeholder='Provide your email'
-											value={email}
-											onChange={e => setEmail(e.target.value)}
+											value={this.state.email}
+											onChange={e => this.setState({email:e.target.value})}
 										/>
 									</Col>
 								</FormGroup>
@@ -89,8 +110,8 @@ const Signin = () => {
 											name='password'
 											id='password'
 											placeholder='Your password here'
-											value={password}
-											onChange={e => setPassword(e.target.value)}
+											value={this.state.password}
+											onChange={e => this.setState({password:e.target.value})}
 										/>
 									</Col>
 								</FormGroup>
@@ -111,6 +132,11 @@ const Signin = () => {
 		
 	);
 
-};
-
-export default Signin;
+}}
+const mapStateToProps=({user})=>({
+	currentUser:user.currentUser
+  })
+const mapDispatchToProps=dispatch=>({
+	setCurrentUser:user=>dispatch(setCurrentUser(user))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Signin);

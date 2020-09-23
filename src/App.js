@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,22 +20,20 @@ import Home from './pages/Home';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import PageNotFound from './pages/PageNotFound';
-import {UserContext} from './context/UserContext';
+//import {UserContext} from './context/UserContext';
 import Footer from './layout/Footer';
+
 
 import firebaseConfig from './Config/firebaseConfig';
 //init firebase
 firebase.initializeApp(firebaseConfig);
 
-const App = () => {
-
-  const [user, setUser] = useState(null);
-
-
+class App extends React.Component {
+   
+  render(){
   return (
     <Router>
       <ToastContainer />
-      <UserContext.Provider value={{user, setUser}}>
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -44,9 +42,8 @@ const App = () => {
           <Route exact path="*" component={PageNotFound} />
         </Switch>
         <Footer/>
-      </UserContext.Provider>
     </Router>
   );
-}
+}}
 
 export default App;

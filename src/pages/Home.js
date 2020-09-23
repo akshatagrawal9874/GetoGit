@@ -1,5 +1,5 @@
 // @ts-nocheck
-import React, { useState, useContext } from "react";
+import React from "react";
 import Axios from "axios";
 
 import {
@@ -16,18 +16,28 @@ import "./Home.css";
 import UserCard from "../components/UserCard";
 import Repos from "../components/Repos";
 import { Redirect } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
+//import { UserContext } from "../context/UserContext";
 import { toast } from "react-toastify";
+import {connect} from "react-redux"
 
-const Home = () => {
-  const context = useContext(UserContext);
-  const [query, setQuery] = useState("");
-  const [user, setUser] = useState(null);
-
-  const fetchDetails = async () => {
+class Home extends React.Component{
+  constructor(){
+    super();
+    this.state={
+      query:"",
+      user:null
+    }
+  }
+   
+ // const context = useContext(UserContext);
+ 
+  /*const [query, setQuery] = useState("");
+  const [user, setUser] = useState(null);*/
+  
+   fetchDetails = async () => {
     try {
-      const { data } = await Axios.get(`https://api.github.com/users/${query}`);
-      setUser(data);
+      const { data } = await Axios.get(`https://api.github.com/users/${this.state.query}`);
+      this.setState({user:data});
       console.log({ data });
     } catch (eror) {
       toast("Not able to locate user", { type: "error" });
@@ -35,12 +45,14 @@ const Home = () => {
   };
 
   //Put Anypage behind login
-
-  if (!context.user?.uid) {
+  render(){
+  const {user}=this.state;
+  if (!this.props.currentUser) {
     return <Redirect to="/signin" />;
   }
 
   return (
+    
     <Container>
       
       <Row className=" mt-3">
@@ -48,12 +60,12 @@ const Home = () => {
           <InputGroup>
             <Input
               type="text"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
+              value={this.state.query}
+              onChange={e => this.setState({query:e.target.value})}
               placeholder="Please provide the username"
             />
             <InputGroupAddon addonType="append">
-              <Button type="submit" style={{width:"auto",height:"38px"}} onClick={fetchDetails} color="primary">
+              <Button type="submit" style={{width:"auto",height:"38px"}} onClick={this.fetchDetails} color="primary">
                 Fetch User
               </Button>
             </InputGroupAddon>
@@ -66,6 +78,8 @@ const Home = () => {
       </div>
     </Container>
   );
-};
-
-export default Home;
+}}
+const mapStateToProps=({user})=>({
+  currentUser:user.currentUser
+})
+export default connect(mapStateToProps)(Home);

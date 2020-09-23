@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React from 'react';
 import {
     Container,
     Form,
@@ -15,25 +15,41 @@ import {
 } from 'reactstrap';
 
 import firebase from 'firebase/app';
-import {UserContext} from '../context/UserContext';
+//import {UserContext} from '../context/UserContext';
 import {Redirect} from 'react-router-dom';
 import {toast} from 'react-toastify';
+import {connect} from "react-redux"
+import {setCurrentUser} from "../User/user.actions"
 
-const Signup = () => {
+class Signup extends React.Component {
 
-    const context = useContext(UserContext)
+    /*const context = useContext(UserContext)
 
     const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+	const [password, setPassword] = useState('')*/
+	constructor(){
+		super();
+		this.state={
+			email:"",
+			password:""
+		}
+	}
 
-    const handleSignUp = () => {
+     handleSignUp = () => {
+		 const {email,password}=this.state;
+		 const {setCurrentUser}=this.props;
         firebase 
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then( res => {
-                console.log(res);
-                context.setUser({email: res.user.email, uid: res.user.uid})
-                })
+                console.log(JSON.stringify(res));
+                //context.setUser({email: res.user.email, uid: res.user.uid})
+			setCurrentUser({
+				     uid:res.user.uid,
+					 email:res.user.email,
+					 password:res.user.password
+			})
+			})
             .catch(error => {
                 console.log(error);
                 toast(error.message, {
@@ -43,12 +59,12 @@ const Signup = () => {
             })
     }
 
-    const handleSubmit = e => {
+     handleSubmit = e => {
         e.preventDefault()
-        handleSignUp()
+        this.handleSignUp()
     }
-
-    if (context.user?.uid) {
+    render(){
+    if (this.props.currentUser) {
         return <Redirect to="/" />
     }  
     return (
@@ -57,7 +73,7 @@ const Signup = () => {
 				<Col lg={6} className='offset-lg-3 mt-5'>
 					<Card>
 					<div className="box background" >
-						<Form onSubmit={handleSubmit}>
+						<Form onSubmit={this.handleSubmit}>
 							<CardHeader className=''>SignUp Here</CardHeader>
 							<CardBody>
 								<FormGroup row>
@@ -70,8 +86,8 @@ const Signup = () => {
 											name='email'
 											id='email'
 											placeholder='Provide your email'
-											value={email}
-											onChange={e => setEmail(e.target.value)}
+											value={this.state.email}
+											onChange={e => this.setState({email:e.target.value})}
 										/>
 									</Col>
 								</FormGroup>
@@ -85,8 +101,8 @@ const Signup = () => {
 											name='password'
 											id='password'
 											placeholder='Your password here'
-											value={password}
-											onChange={e => setPassword(e.target.value)}
+											value={this.state.password}
+											onChange={e => this.setState({password:e.target.value})}
 										/>
 									</Col>
 								</FormGroup>
@@ -104,6 +120,11 @@ const Signup = () => {
 		</Container>
 	);
 
-};
-
-export default Signup;
+}}
+const mapStateToProps=({user})=>({
+  currentUser:user.currentUser
+})
+const mapDispatchToProps=dispatch=>({
+  setCurrentUser:user=>dispatch(setCurrentUser(user))
+})
+export default connect(mapStateToProps,mapDispatchToProps)(Signup);
